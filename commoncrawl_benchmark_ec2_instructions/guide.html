@@ -1,0 +1,319 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>GraphLab Create CommonCrawl Benchmark Instructions</title>
+
+</head>
+<body>
+<h1>GraphLab Create CommonCrawl Benchmark Instructions</h1>
+
+<h2>Part 1: Creating an AWS EC2 Instance</h2>
+
+<h3>Sign In to the AWS Console</h3>
+
+<p>Sign In to the AWS console: <a href="https://console.aws.amazon.com/console/home">https://console.aws.amazon.com/console/home</a></p>
+
+<p>You will get to the AWS Sign In screen:</p>
+
+<p><img src="s01_login_to_aws.png" width="400" alt="" /></p>
+
+<p>Enter your credentials and Sign In. The next screen shows the big list of AWS services:</p>
+
+<p><img src="s02_aws_management_console.png" width="400" alt="" /></p>
+
+<p>Note the top-right corner: between your account (<em>guy @ graphlab</em> in this example) and the <strong>Support</strong> dropdown, you should see your AWS region. In this example, the region is <strong>Oregon</strong>. If your region is different, click on the regions dropdown and select <strong>US West (Oregon)</strong>. This is the region where we stored the dato for this benchmark. If you'll use the same region as we did, then pulling the data from S3 will be much, much faster.</p>
+
+<p><img src="aws_regions.png" width="300" alt="" /></p>
+
+<p>Now that your region is properly set, click on the EC2 icon (first item in first column, top-left icon.)</p>
+
+<p><img src="ec2_icon.png" width="200" alt="" /></p>
+
+<p>You will be presented with the EC2 Management Console.</p>
+
+<p><img src="ec2_management_console.png" width="400" alt="" /></p>
+
+<h3>Create the Instance</h3>
+
+<p>On the left sidebar, under ths <strong>INSTANCES</strong> category, choose the <strong>Instances</strong> option.</p>
+
+<p>Click on the <strong>Launch Instnace</strong> button. <img src="button_launch_instance.png" width="100" alt="" /></p>
+
+<h4>Step 1: Choose AMI</h4>
+
+<p>You will now follow a set of steps necessary for launching an instance. This is the screen of <strong>Step 1: Choose an Amazon Machine Image (AMI)</strong>.</p>
+
+<p><img src="launch_instance_step1.png" width="400" alt="" /></p>
+
+<p>Scroll the list of AMIs down to <strong>Ubuntu Server</strong> (the current version is <strong>Ubuntu Server 14.04 LTS (HVM), SSD Volume Type - ami-9abea4fb</strong>). Click on the <strong>Select</strong> button. <img src="button_select.png" width="70" alt="" /></p>
+
+<h4>Step 2: Choose Instance Type</h4>
+
+<p>Scroll down the list of instance types and choose <strong>r3.8xlarge</strong>. That's a strong machine, with 32 cores, 244 Gigabytes of RAM, and 2 SSD drives, each sized 320 GBs.</p>
+
+<p><img src="launch_instance_step2.png" width="400" alt="" /></p>
+
+<p>After you chose the type, in the breadcrumb list of steps, skip to <strong>4. Add Storage</strong>.</p>
+
+<h4>Step 4: Add Storage (yes, we skipped Step 3!)</h4>
+
+<p><img src="launch_instance_step4_add_storage_16gb.png" width="400" alt="" /></p>
+
+<h4>Step 5: Tag Instance</h4>
+
+<p><img src="launch_instance_step5_tag.png" width="400" alt="" /></p>
+
+<h4>Step 6: Configure Security Group</h4>
+
+<p><img src="launch_instance_step6_security_group.png" width="400" alt="" /></p>
+
+<p><img src="launch_instance_step6_security_group_my_ip.png" width="200" alt="" /></p>
+
+<p>Button
+<img src="button_review_and_launch.png" width="130" alt="" /></p>
+
+<h4>Launch Your Instance!</h4>
+
+<p>You can review your instance's configuration. When finished, click on the <strong>Launch</strong> button to finally launch your instance! <img src="button_launch.png" width="50" alt="" /></p>
+
+<p><img src="launch_instance_step7_key_pairs.png" width="400" alt="" /></p>
+
+<p>But how will you connect to your instance? Upon Launch, AWS immediately asks you to
+provide an SSH key pair. If you don't have such a key pair, you can choose the
+<strong>Create a new key pair</strong> option. Give it a <strong>Key pair name</strong>, then click on
+the <strong>Download Key Pair</strong> button. <img src="button_download_key_pair.png" width="70" alt="" /></p>
+
+<p>After the key pair we downloaded, click on the <strong>Launch Instances</strong> button. <img src="button_launch_instances.png" width="100" alt="" /></p>
+
+<p>You will get the following status screen:</p>
+
+<p><img src="launch_instance_status_ok.png" width="400" alt="" /></p>
+
+<p>In my case, it says:
+<code>The following instance launches have been initiated: i-84dea55c</code>
+Click on the instance name (<strong>i-84dea55c</strong> in this example) to get to your instance's status screen.</p>
+
+<p>From OS X or Linux, simply run the following command in your terminal:</p>
+
+<p><img src="screen_instance.png" width="400" alt="" /></p>
+
+<p>Click on the <strong>Connect</strong> button. <img src="button_connect.png" width="50" alt="" /></p>
+
+<p>You will see AWS' instructions for connecting to your instance.</p>
+
+<p><img src="screen_connect_to_your_instance.png" width="400" alt="" /></p>
+
+<p>Follow the instructions, and note the public DNS assigned to your instance
+(in the example above, it is <code>ec2-52-37-124-80.us-west-2.compute.amazonaws.com</code>).</p>
+
+<p>If you are in OS X or Linux, you can connect to your instance from the shell:</p>
+
+<pre><code>ssh -i "/PATH/TO/DOWNLOADED/KEY_FILE.pem" ubuntu@&lt;your-ec2-public-dns&gt;.compute.amazonaws.com
+# In my case, the command is:
+ssh -i "/Users/dato/Downloads/guy_commoncrawl_benchmark.pem" ubuntu@ec2-52-37-124-80.us-west-2.compute.amazonaws.com
+</code></pre>
+
+<p>You can also follow AWS' online instructions at:
+<a href="https://docs.aws.amazon.com/console/ec2/instances/connect/docs">https://docs.aws.amazon.com/console/ec2/instances/connect/docs</a></p>
+
+<p>They also have <a href="https://docs.aws.amazon.com/console/ec2/instances/connect/putty">instructions written specifically for PuTTY</a>, a famous Windows SSH client.</p>
+
+<h2>Part 2: Installing Requirements on your Instance</h2>
+
+<p>Now that you are logged into your instance via ssh, run each of the following commands.</p>
+
+<p>Note: pasting all the commands will only run the first one.
+Please run each command separately.</p>
+
+<p>The instructions for securing the notebook server are taken from
+<a href="http://jupyter-notebook.readthedocs.org/en/latest/public_server.html">Jupyter's website</a>.</p>
+
+<pre><code># Install Python, VirtualEnv
+sudo apt-get update
+sudo apt-get install -y build-essential python-setuptools zlib1g-dev
+sudo easy_install pip
+sudo pip install virtualenv
+
+# Create a VirtualEnv for GraphLab Create
+virtualenv graphlab_venv
+cd graphlab_venv
+source bin/activate
+pip install graphlab-create
+cd ~
+
+# Install Jupyter (IPython-Notebook)
+sudo apt-get install -y python-dev
+pip install jupyter
+
+# Password protect Jupyter
+jupyter notebook --generate-config
+python -c "from notebook.auth import passwd; password = passwd(); open('/home/ubuntu/.jupyter/jupyter_notebook_config.py', 'a').write('c.NotebookApp.password = u\'%s\'' % (password))"
+
+# Download the Benchmark's IPython Notebook
+wget &lt;public address of the notebook&gt;
+
+# Run the notebook
+nohup jupyter notebook --no-browser --ip="*" &amp; &gt; pid
+</code></pre>
+
+<p>The Jupyter server is now running. You should browse to <a href="http://&lt;your%20instance%20address>:8000">http://&lt;your instance address>:8000</a> .
+This is what you're supposed to see in your browser:</p>
+
+<p><img src="jupyter_login.png" width="400" alt="" /></p>
+
+<p>Use the password you entered in order to log into the notebook server.</p>
+
+<p>The rest of the benchmark can be executed via your browser.</p>
+</body>
+</html>
