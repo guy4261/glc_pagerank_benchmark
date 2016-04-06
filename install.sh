@@ -15,6 +15,9 @@ cd ~
 sudo apt-get install -y python-dev
 pip install jupyter
 
+# Download the commoncrawl benchmark notebook
+wget https://raw.githubusercontent.com/guy4261/glc_pagerank_benchmark/master/commoncrawl_benchmark.ipynb
+
 # Run the notebook
 nohup jupyter notebook --no-browser --ip="*" & > pid
 
