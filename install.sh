@@ -15,6 +15,10 @@ cd ~
 sudo apt-get install -y python-dev
 pip install jupyter
 
+# Uncomment the following two lines in order to password-protect your Jupyter instance.
+#jupyter notebook --generate-config
+#python -c "from notebook.auth import passwd; password = passwd(); open('/home/ubuntu/.jupyter/jupyter_notebook_config.py', 'a').write('c.NotebookApp.password = u\'%s\'' % (password))"
+
 # Download the commoncrawl benchmark notebook
 wget https://raw.githubusercontent.com/guy4261/glc_pagerank_benchmark/master/commoncrawl_benchmark.ipynb
 
