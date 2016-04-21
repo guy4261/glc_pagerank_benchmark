@@ -2,6 +2,7 @@
 
 # Install Python, VirtualEnv, GraphLab Create inside VirtualEnv
 sudo apt-get update
+sudo apt-get install -y screen
 sudo apt-get install -y build-essential python-setuptools zlib1g-dev
 sudo easy_install pip
 sudo pip install virtualenv
@@ -21,6 +22,7 @@ pip install jupyter
 
 # Download the commoncrawl benchmark notebook
 wget https://raw.githubusercontent.com/guy4261/glc_pagerank_benchmark/master/commoncrawl_benchmark.ipynb
+wget https://raw.githubusercontent.com/guy4261/glc_pagerank_benchmark/master/criteo_benchmark.ipynb
 
 # Run the notebook
 nohup jupyter notebook --no-browser --ip="*" & > pid
