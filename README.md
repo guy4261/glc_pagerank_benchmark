@@ -42,3 +42,14 @@ The *"blog post"* IPython/Jupyter Notebook explanation of this benchmark:
 The benchmark notebook:
 * Rendered version: https://github.com/guy4261/glc_pagerank_benchmark/blob/master/criteo_benchmark.ipynb
 * Downloadable version: https://raw.githubusercontent.com/guy4261/glc_pagerank_benchmark/master/criteo_benchmark.ipynb
+
+## Predictive Services Benchmark
+
+A notebook for benchmarking the Predictive Services
+[is available here](ps_benchmark.ipynb).
+
+This is a good starting point for those who would like to actually
+run a predictive service for the first time
+(train a model, deploy it, query it). But it also extends to
+run a stress-test on the deployed service using Apache Bench (`ab`).
+
